@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./js/jquery.min.js"></script>
+
+</head>
+
+<body>
+  <script>
+    //分布式版本控制系统 git
+    //Git快照是在原有文件版本的基础上重新生成一份新的文件，类似于备份。
+    //为了效率，如果文件没有修改，Git不再重新存储该文件，而是只保留一个链接指向之前存储的文件。
+    // 三个区域
+    //工作区 暂存区、git仓库
+    // 1 git config --global user.name "itheima"
+    // 2 git config --global user.email "itheima@itcast.cn"     1、2只需运行一次
+
+    /* #查看所有的全局配置项
+    git config --list --global
+    #查看指定的全局配置项
+     git config user.name5 
+    git config user.email*/
+
+    //git help config  在浏览器打开帮助手册
+    //git help -h  在终端打开手册
+
+    /*1.在现有目录中初始化仓库
+    如果自己有一个尚未进行版本控制的项目目录，想要用Git来控制它，需要执行如下两个步骤;
+    在项目目录中，通过鼠标右键打开“Git Bash"
+   执行git init命令将当前的目录转化为Git 仓库
+    git init 命令会创建一个名为.git 的隐藏目录，
+    这个.git目录就是当前项目的Git仓库，里面包含了初始的必要文件，这些文件是Git仓库的必要组成部分。*/
+
+    //未跟踪状态（Untracked）--不被git管理的文件
+
+    /*检查文件的状态
+    可以使用git status命令查看文件处于什么状态
+    
+    两条完全等价的命令，其中-s是--short的简写形式:
+    以精简的方式显示文件状态
+      git status -s
+      git status --short
+    
+    跟踪新文件 
+      git add 文件名.后缀
+    
+    //清空终端结果
+    clear  
+    
+    
+    
+    
+    
+    
+    
+    
+    */
+  </script>
+
+</body>
+
+</html>
