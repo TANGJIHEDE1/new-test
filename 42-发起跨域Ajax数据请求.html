@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./js/jquery.min.js"></script>
+</head>
+
+<body>
+  <script>
+    $.ajax({
+      method: 'GET',
+      url: 'http://ajax.frontend.itheima.net:3006/api/jsonp',
+      data: {
+        name: 'zs',
+        age: 20
+      },
+      success: function (res) {
+        console.log(res);
+      }
+    })
+    // Failed to load resource: net::ERR_CONNECTION_REFUSED  请求失败
+
+
+    function success(data) {
+      console.log('拿到getdata数据');
+      console.log(data);
+    }
+  </script>
+  <!-- 查询js文件中是否有success函数   ?callback=success&name=xxx-->
+  <script src="./js/42-getdata.js"></script>
+</body>
+
+</html>

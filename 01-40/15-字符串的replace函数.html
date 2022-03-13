@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./js/template-web.js"></script>
+  <script src="./js/jquery.min.js"></script>
+</head>
+
+<body>
+
+
+
+  <script>
+    //replace（替换前的内容，替换后的内容）
+
+
+    //1.单次replace
+    var str = '<div>你好啊，{{name}}</div>'
+    // //不可以有多余的空格
+    var pattern = /{{([a-zA-Z]+)}}/
+    var Result = pattern.exec(str) //返回的是一个对象
+
+    str = str.replace(Result[0], Result[1])
+    console.log(Result);
+    console.log(str);
+
+
+    /*
+    0: "{{name}}"
+    1: "name"
+    groups: undefined
+    index: 9
+    input: "<div>你好啊，{{name}}</div>"
+    length: 2
+    */
+
+
+
+    //2.多次replace
+
+    var Str = '<div>你好{{name}}，{{age}}</div>'
+    var Pattern = /{{\s*([a-zA-Z]+)\s*}}/
+    console.log(Pattern);
+
+    //第一次匹配
+    var res1 = Pattern.exec(Str)
+    console.log(res1);
+    Str = Str.replace(res1[0], res1[1])
+    console.log(Str); //<div>你好name，{{age}}</div>
+
+    //第二次匹配
+    var res2 = Pattern.exec(Str)
+    console.log(res1);
+    Str = Str.replace(res2[0], res2[1])
+    console.log(Str); //<div>你好name，age</div>
+
+    //第三次匹配
+    var res3 = Pattern.exec(Str)
+    console.log(res3); //null
+  </script>
+
+</body>
+
+</html>

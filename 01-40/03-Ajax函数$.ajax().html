@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./00.jquery.min.js"></script>
+</head>
+
+<body>
+  <button id="ajax">post函数</button><button id="ajax1">post函数1</button>
+
+  <script>
+    //接口概念: 被请求的URL地址 叫做数据接口（接口），每个接口都有请求方式
+    //PostMan的使用：
+    //get 要选取params窗口填写值
+    //post要选取body栏填写值 且是x-www-from...
+
+    // $.ajax({
+    // type: "请求的方式，如GET或POST
+    // url: ''请求的URL地址
+    // data: {}, ll这次请求要携带的数据
+    // success: function (res) { }//请求成功之后的回调函数
+    //})
+
+    $(function () {
+      $(function () {
+        $('#ajax').on('click', function () {
+            $.ajax({
+              type: 'get',
+              url: 'http://www.liulongbin.top:3006/api/getbooks',
+              data: {
+                id: 1
+              },
+              success: function (res) {
+                console.log(res);
+              }
+            })
+          }),
+          $('#ajax1').on('click', function () {
+            $.ajax({
+              type: 'post',
+              url: 'http://www.liulongbin.top:3006/api/addbook',
+              data: {
+                bookname: '堂吉诃德',
+                author: 'xxx',
+                publisher: 'xxxx.xxx.xxx'
+              },
+              success: function (res) {
+                console.log(res);
+              }
+            })
+          })
+
+      })
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./js/28-myAjax.js"></script>
+</head>
+
+<body>
+  <script>
+    // 把数据对象转换为字符串的过程， 叫做序列化， 例如: 调用JSON.stringify() 函数的操作， 叫做JSON 序列化。
+    // 把字符串转换为数据对象的过程， 叫做反序列化， 例如: 调用JSON.parse() 函数的操作， 叫做JSON反序列化
+    //json序列化 obj-> string 
+    //json反序列化 string -> obj
+
+    // myAjax({
+    //   method: "GET",
+    //   url: 'http://www.liulongbin.top:3006/api/getbooks', //不可以包含有多余空格
+    //   data: {
+    //     id: 1,
+    //   },
+    //   success: function (res) {
+    //     console.log(res)
+    //   }
+    // })
+
+    myAjax({
+      method: 'POST',
+      url: 'http://www.liulongbin.top:3006/api/addbook',
+      data: {
+        bookname: '堂吉诃德',
+        author: 'xxx',
+        publisher: 'xxxx.xxx.xxx'
+      },
+      success: function (res) {
+        console.log(res);
+      }
+    })
+  </script>
+</body>
+
+</html>

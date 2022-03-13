@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./js/template-web.js"></script>
+  <script src="./js/jquery.min.js"></script>
+</head>
+
+<body>
+
+
+
+  <script>
+    //1.exec() 用于检索字符串中的正则表达式的匹配
+
+    var str = '<div>你好啊，{{name}}</div>'
+    // //不可以有多余的空格
+    var pattern = /{{([a-zA-Z]+)}}/
+    var Result = pattern.exec(str)
+    console.log(Result);
+    /*
+    0: "{{name}}"
+    1: "name"
+    groups: undefined
+    index: 9
+    input: "<div>你好啊，{{name}}</div>"
+    length: 2
+    */
+  </script>
+
+</body>
+
+</html>

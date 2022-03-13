@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./js/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="./../bootstrap/css/bootstrap.css">
+  <!-- 0.导入js文件 -->
+  <script src="./js/template-web.js"></script>
+</head>
+
+<body>
+  <style>
+    body {
+      margin: 25px;
+    }
+  </style>
+
+  <script>
+    /*
+  
+      1.输出 
+      {{ value }}
+      {{ obj.key }}
+      {{ obj['key'] }}
+      {{ a?b:c }}
+      {{ a||b }}
+      {{ a+b }}
+      
+       2.如果输出的value值中包含html标签的结构,需要渲染输出的话  {{@ 原文}}
+        {{@  <h2>原文</h2>  }}     结果 : 原文
+
+      3.条件输出
+      {{if value}} 输出内容1 {{/if}}
+      {{if value1}} 输出内容1 {{else if value2}} 输出内容2 {{/if}}
+
+      //4.循环输出
+      {{each arr}}
+      
+      {{$index}} {{$value}}
+
+      {{/each}}
+
+      //5.过滤器函数 
+      {{value | filterName }}    ' \' 称为管道操作符
+      操作: 将value作为参数传到filterName函数中,最后返回一个新值
+      定义过滤器语法:
+      template.defaults.imports.filterName = function(value){  ...  }
+ 
+*/
+  </script>
+
+  <!-- //4. -->
+  <div id="container"></div>
+
+  <!-- //2. 模板-->
+  <script type="text/html" id="temp">
+    <h3>name:{{name}}</h3>
+
+    <!-- 03.条件输出 -->
+    <h3>
+      {{if flag==2}} 1.flag 是2 {{/if}}
+      <br>
+      {{if flag==1}} 2.flag 是1
+      {{else if flag==2}} 2.flag=2{{/if}}
+    </h3>
+    <!-- 04.循环输出 -->
+    <ul>
+      <!-- each likes likes :属性-->
+      {{each likes}}
+      <li> index: {{$index+1}} value: {{ $value>20 ? $value : 99999999}}
+        {{/each}}
+    </ul>
+    <!--05. 过滤器 -->
+    {{datatime}}
+    <div> 时间:{{ datatime | filterTime}}</div>
+  </script>
+
+  <script>
+    //05.定义过滤器
+    template.defaults.imports.filterTime = function (data) {
+      var y = data.getFullYear()
+      var m = data.getMonth() + 1
+      var d = data.getDate()
+      //一定要有return
+      return y + '-' + m + '-' + d
+    }
+    
+    //1.
+    var stuinfo = {
+      name: 'sss',
+      sex: 'man',
+      age: 20,
+      flag: 2,
+      likes: ['11', '22', '33', '44'],
+      datatime: new Date()
+
+    }
+    //3.
+    var htmlstr = template('temp', stuinfo)
+    //5.
+    $('#container').html(htmlstr)
+    console.log(htmlstr);
+  </script>
+
+</body>
+
+</html>

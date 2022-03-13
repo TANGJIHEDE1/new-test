@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./../bootstrap/css/bootstrap.css">
+  <script src="./js/jquery.min.js"></script>
+</head>
+
+<body style="margin: 100px;">
+
+  <input type="file" id="file1" />
+  </br>
+  <button id="btnUpload">上传文件</button>
+  <!-- 进度条 -->
+  <div class="progress" style="width: 500px; margin: 15px;">
+    <div class="progress-bar progress-bar-striped active" style="width: 0%" id="percent">0%</div>
+  </div>
+  </br>
+  <!-- 照片 -->
+  <img src="" alt="" id="img">
+
+  <script>
+    var btnUpload = document.querySelector('#btnUpload')
+
+    btnUpload.addEventListener('click', function () {
+      var files = document.querySelector('#file1').files
+      if (files.length <= 0) {
+        return alert('请选择要上传的文件!')
+      }
+      //可以看出是一个数据盒子对象
+      var fd = new FormData()
+
+      //将用户选择的文件，添加到FormData中
+      fd.append('avatar', files[0])
+
+      //发起上传文件的请求
+      var xhr = new XMLHttpRequest()
+
+      //监听文件上传的进度
+      xhr.upload.onprogress = function (e) {
+        //lengthComputable 是一个boolean值
+        if (e.lengthComputable) {
+          //计算上传速度
+          var procentComplete = Math.ceil((e.loaded / e.total) * 100)
+          //e.loaded 已传输的字节
+          //e.total 需传输的总字节
+          console.log(procentComplete);
+          $('#percent').attr('style', 'width:' + procentComplete + '%;').html(procentComplete + '%')
+        }
+      }
+
+      //上传完成后，将进度条颜色改成绿色
+      xhr.upload.onload = function () {
+        $('#percent').removeClass().addClass('progress-bar progress-bar-success')
+      }
+
+      xhr.open('POST', 'http://www.liulongbin.top:3006/api/upload/avatar')
+      //fd是上传的数据
+      xhr.send(fd)
+
+      //查看是否上传成功
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) { //若上传成功后
+          console.log(JSON.parse(xhr.responseText));
+          // 上传了文件之后，再拿到接口里面的数据对象
+          var data = JSON.parse(xhr.responseText)
+
+          if (data.status === 200) { //上传文件成功
+            //将服务器放回的图片地址，设置img的src属性
+            document.querySelector('#img').src = 'http://www.liulongbin.top:3006' + data.url
+
+          } else { //上传失败
+            console.log(data.message);
+            $('#percent').html("上传失败!")
+          }
+        }
+      }
+    })
+  </script>
+
+</body>
+
+</html>

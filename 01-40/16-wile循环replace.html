@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./js/template-web.js"></script>
+  <script src="./js/jquery.min.js"></script>
+</head>
+
+<body>
+
+
+
+  <script>
+    //replace（替换前的内容，替换后的内容）
+    var Str = '<div>你好{{name}}，{{age}}</div>'
+    var Pattern = /{{\s*([a-zA-Z]+)\s*}}/
+
+    var result = null
+
+    while (result = Pattern.exec(Str)) {
+      //result = Pattern.exec(Str)  :Result 返回的是一个键值对
+      Str = Str.replace(result[0], result[1])
+      console.log(Str); //<div>你好name，{{age}}</div>
+    }
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./js/18-自定义模板引擎.js"></script>
+
+</head>
+
+<body>
+
+  <div id="container"></div>
+
+  <script type="text/html" id="tpl-user">
+    <!--  定义模板引擎 -->
+  <div>姓名: {{ name }}</div>
+  <div>年龄: {{ age }}</div>
+  <div>性别: {{gender }}</div>
+  <div>住址: {{address }}</div>
+  </script>
+
+  <script>
+    data = {
+      name: 'xxx',
+      age: 20,
+      gender: '男',
+      address: '湾仔码头'
+    }
+    // template 模板引擎方法 引入js文件
+    var htmlStr = template('tpl-user', data)
+    /*
+    htmlStr:
+    <div>姓名: xxx</div>
+    <div>年龄: 20</div>
+    <div>性别: 男</div>
+    <div>住址: 湾仔码头</div>
+    */
+    document.getElementById('container').innerHTML = htmlStr
+  </script>
+
+</body>
+
+</html>

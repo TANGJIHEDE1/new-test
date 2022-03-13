@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+  <script src="./js/jquery.min.js"></script>
+  <script src="./js/axios/axios.js"></script>
+</head>
+
+<body style="margin: 100px;">
+
+  <button id="btn1">axios发送get请求</button>
+  <button id="btn2">axios发送post请求</button>
+
+  <script>
+    document.querySelector('#btn1').addEventListener('click', function () {
+      var url = 'http://www.liulongbin.top:3006/api/post'
+      var Obj = {
+        name: 'xxx',
+        age: 20
+      }
+      axios({
+        method: 'GET',
+        url: url
+      }).then(function (res) {
+        console.log(res.data);
+      })
+    })
+  </script>
+</body>
+
+</html>

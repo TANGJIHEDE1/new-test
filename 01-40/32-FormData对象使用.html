@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+
+</head>
+
+<body>
+
+
+  <script>
+    // XMLHttpRequest （xhr） 是浏览器提供的js对象，通过它可以请求服务器上的数据资源
+    // Ajax函数就是基于xhr对象封装出来的 
+
+    //2.XMLHttpRequest Level2的新功能
+    /*
+    可以设置HTTP请求的时限
+    可以使用FormData对象管理表单数据
+    */
+
+    var fd = new FormData()
+    fd.append('name', 'xxx')
+    fd.append('pwd', '123456')
+    var xhr = new XMLHttpRequest()
+    xhr.open('POST', 'http://www.liulongbin.top:3006/api/formdata')
+    xhr.send(fd)
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        console.log(JSON.parse(xhr.responseText));
+      }
+    }
+  </script>
+
+</body>
+
+</html>

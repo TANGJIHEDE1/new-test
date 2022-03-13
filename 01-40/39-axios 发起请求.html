@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <script src="./js/axios/axios.js"></script>
+</head>
+
+<body style="margin: 100px;">
+  Axios 是专注于网络数据请求的库<br>
+  <button id="btn1">发送get请求</button>
+  <button id="btn2">发送post请求</button>
+  <button id="btn3">axios发送get请求</button>
+  <button id="btn4">axios发送post请求</button>
+
+  <script>
+    //get请求
+    document.querySelector('#btn1').addEventListener('click', function () {
+      var url = 'http://www.liulongbin.top:3006/api/get'
+      var paramsObj = {
+        name: 'xxx',
+        age: 20
+      }
+      axios.get(url, {
+        params: paramsObj
+      }).then(function (res) {
+        console.log(res.data);
+      })
+    })
+    //post请求
+    document.querySelector('#btn2').addEventListener('click', function () {
+      var url = 'http://www.liulongbin.top:3006/api/post'
+      var paramsObj1 = {
+        name: 'xxxxxx',
+        age: 200
+      }
+      axios.post(url, {
+        params: paramsObj1
+      }).then(function (res) {
+        console.log(res);
+      })
+    })
+
+    //axios请求get方法
+    document.querySelector('#btn3').addEventListener('click', function () {
+      var url = 'http://www.liulongbin.top:3006/api/get'
+      var Obj = {
+        name: 'axios请求get方法',
+        age: 20
+      }
+      axios({
+        method: 'GET',
+        url: url,
+        params: Obj
+      }).then(function (res) {
+        console.log(res.data);
+      })
+    })
+
+    //axios请求post方法
+    document.querySelector('#btn4').addEventListener('click', function () {
+      var url = 'http://www.liulongbin.top:3006/api/post'
+      var Obj = {
+        name: 'axios请求get方法',
+        age: 20
+      }
+      axios({
+        method: 'POST',
+        url: url,
+        params: Obj
+      }).then(function (res) {
+        console.log(res.data);
+      })
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //这是一个对象
+    // var obj1 = {
+    //   a: 'Hello',
+    //   b: 'world'
+    // }
+    //这是一个JSON字符串，本质是一个字符串
+    // var json = ' {"a": "Hello","b": "world"}'
+
+
+
+    //1.json.parse()   json->js
+    var jsonstr = '{"a" : "Hello","b": "world"}'
+    var obj = JSON.parse(jsonstr)
+    console.log(obj)
+    //{a: 'Hello', b: 'world'}
+
+
+    //2.json.stringify()   js->json
+    var obj2 = {
+      a: 'Hello',
+      b: 'world'
+    }
+    var jsonstr2 = JSON.stringify(obj2)
+    console.log(jsonstr2);
+    //{"a":"Hello","b":"world"}
+
+
+    //应用场景
+    var xhr = new XMLHttpRequest()
+    xhr.open('GET', 'http://www.liulongbin.top:3006/api/getbooks')
+    xhr.send()
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        console.log(xhr.responseText)
+        console.log(typeof xhr.responseText)
+        //json -> js
+        var result = JSON.parse(xhr.responseText)
+        console.log(result)
+      }
+    }
+  </script>
+</body>
+
+</html>

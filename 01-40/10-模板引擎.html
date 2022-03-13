@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./js/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="./../bootstrap/css/bootstrap.css">
+  <!-- 0.导入js文件 -->
+  <script src="./js/template-web.js"></script>
+</head>
+
+<body>
+
+  <style>
+    body {
+      margin: 25px;
+    }
+  </style>
+
+  <!-- 5.存放数据的地方 -->
+  <div id="container"></div>
+
+  <!-- http: //aui.github.io/art-template/docs/installation.html //下载art-template -->
+
+  <!-- 2.定义模板 要写在  <script type="text/html">  </script>中 -->
+  <script type="text/html" id="tpl-user">
+    <h1>name:{{name}}</h1>
+    <h1>age:{{age}}</h1>
+    <h1>sex:{{sex}}</h1>
+  </script>
+
+
+  <script>
+    //1.定义数据
+    var data = {
+      name: 'xxx',
+      age: 20,
+      sex: '男'
+    }
+    //3.调用template函数 template（模板id，渲染的数据对象）
+    var htmlstr = template('tpl-user', data)
+
+    //4.渲染html
+    $('#container').html(htmlstr)
+  </script>
+</body>
+
+</html>

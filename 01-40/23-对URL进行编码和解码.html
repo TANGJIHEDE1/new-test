@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <script src="./js/jquery.min.js"></script>
+</head>
+
+<body>
+  <script>
+    //encodeURL() 编码函数
+    //decodeURL() 解码函数
+    var str = '堂吉诃德'
+
+    var str1 = encodeURI(str)
+    console.log(str1);
+    //3个%表示一个字
+    var str2 = decodeURI('%E5%A0%82 %E5%90%89')
+    console.log(str2);
+
+    //http: //www.liulongbin.top: 3006/api/getbooks?id=1&bookname=西游记
+    //经过URL编码之后，URL地址变成了如下格式:  3个%表示一个字
+    //http://www.liulongbin.top:3006/api/getbooks?id=1&bookname=%EA%E8% %F6%3B%E3 %B8%E8%AE
+    //P88 2022/3/11
+  </script>
+</body>
+
+</html>

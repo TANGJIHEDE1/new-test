@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./00.jquery.min.js"></script>
+</head>
+
+<body>
+  <form id="fo" action="/login">
+    <input type="text" name="email">
+    <input type="password" name="password">
+    <button type="submit">提交</button>
+  </form>
+
+  <script>
+    $(function () {
+      // 1. 监听表单提交事件
+      $('#fo').submit(function (e) {
+        alert('1')
+        //2.阻止默认跳转事件
+        e.preventDefault()
+      })
+
+      //2.
+      // $('#fo').on('submit', function () {
+      //   alert('1')
+      // e.preventDefault()
+      // })
+    })
+  </script>
+</body>
+
+</html>

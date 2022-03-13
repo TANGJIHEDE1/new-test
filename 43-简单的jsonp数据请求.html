@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./js/jquery.min.js"></script>
+</head>
+
+<body>
+  <script>
+    //jQuery采用的是动态创建和移除<script>标签的方式，发起jsonp数据请求
+    // jQuery 中的JSONP， 也是通过 < script >
+    // 标签的src属性实现跨域数据访问的， 只不过jQuery采用的是动态创建和移除 < script > 标签的方式， 来发起JSONP 数据请求。· 在发起JSONP请求的时候， 动态向 < header >
+    //中append一个 < script > 标签;
+    // 在JSONP请求成功以后， 动态从 < header > 中移除刚才append进去的 < script > 标签;
+
+    function success(data) {
+      console.log('拿到getdata数据');
+      console.log(data);
+    }
+    // jQuery发起Ajax请求
+    $.ajax({
+      url: "http://liulongbin.top:3006/api/jsonp?&name=ls&age=30",
+      dataType: 'jsonp',
+      //发送到服务端的参数名称，默认是callback
+      jsonp: 'callback',
+      //自定义回调函数名称，默认值为Jqueryxxx格式
+      jsonpCallback: 'abc',
+      success: function (res) {
+        console.log(res);
+      }
+    })
+  </script>
+  <!-- 查询js文件中是否有success函数   ?callback=success&name=xxx-->
+  <script src="http://liulongbin.top:3006/api/jsonp?callback=success&name=ls&age=30">
+  </script>
+</body>
+
+</html>

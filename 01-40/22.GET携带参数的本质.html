@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <script src="./js/jquery.min.js"></script>
+</head>
+
+<body>
+  <script>
+    // $.get('http://www.liulongbin.top:3006/api/getbooks', { id: 1, bookname: '西游记' }, function (res) {
+    //   console.log(res)
+    // })
+
+    // $.get(url,{data},func())
+
+    $.ajax({
+      method: 'GET',
+      url: 'http://www.liulongbin.top:3006/api/getbooks',
+      data: {
+        //键值对
+        id: 1,
+        bookname: '西游记'
+      },
+      success: function (res) {
+        console.log(res)
+      }
+    })
+
+    //http: //www.liulongbin.top: 3006/api/getbooks?id=1&bookname=西游记
+    //经过URL编码之后，URL地址变成了如下格式:  3个%表示一个字
+    //http://www.liulongbin.top:3006/api/getbooks?id=1&bookname=%EA%E8% %F6%3B%E3 %B8%E8%AE
+  </script>
+</body>
+
+</html>

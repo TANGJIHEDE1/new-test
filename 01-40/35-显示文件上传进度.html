@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+
+</head>
+
+<body>
+
+
+  <input type="file" id="file1" />
+  <button id="btnUpload">上传文件</button>
+  </br>
+  <img src="" alt="" id="img" width="800px">
+
+  <script>
+    var btnUpload = document.querySelector('#btnUpload')
+
+    btnUpload.addEventListener('click', function () {
+      var files = document.querySelector('#file1').files
+      if (files.length <= 0) {
+        return alert('请选择要上传的文件!')
+      }
+
+      var fd = new FormData()
+      //追加文件
+      fd.append('avatar', files[0])
+      //发起上传文件的请求
+      var xhr = new XMLHttpRequest()
+
+      //监听文件上传的进度
+      xhr.upload.onprogress = function (e) {
+        //lengthComputable 是一个boolean值
+        if (e.lengthComputable) {
+          //计算上传速度
+          var procentComplete = Math.ceil((e.loaded / e.total) * 100)
+          //e.loaded 已传输的字节
+          //e.total 需传输的总字节
+          console.log(procentComplete);
+        }
+      }
+
+      xhr.open('POST', 'http://www.liulongbin.top:3006/api/upload/avatar')
+      //fd是上传的数据
+      xhr.send(fd)
+
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          console.log(JSON.parse(xhr.responseText));
+          // 上传了文件之后，再拿到接口里面的数据对象
+          var data = JSON.parse(xhr.responseText)
+
+          if (data.status === 200) { //上传文件成功
+            //将服务器放回的图片地址，设置img的src属性
+            document.querySelector('#img').src = 'http://www.liulongbin.top:3006' + data.url
+          } else { //上传失败
+            console.log(data.message);
+          }
+        }
+      }
+    })
+
+
+    // var form = document.querySelector('#form1')
+
+    // form.addEventListener('submit', function (e) {
+
+    //   e.preventDefault()
+
+    //   var fd = new FormData(form)
+
+    //   var xhr = new XMLHttpRequest()
+
+    //   xhr.open('POST', 'http://www.liulongbin.top:3006/api/formdata')
+    //   //传入
+    //   xhr.send(fd)
+
+    //   xhr.onreadystatechange = function () {
+    //     if (xhr.readyState === 4 && xhr.status === 200) {
+    //       console.log(JSON.parse(xhr.responseText));
+    //     }
+    //   }
+    // })
+  </script>
+
+</body>
+
+</html>

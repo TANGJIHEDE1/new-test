@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //同源：两个页面 协议、域名和端口都相同 ，端口不写默认:80
+
+    //同源策略: 浏览器提供的安全功能,
+    //A网站JavaScript，不允许和非同源的网站B之间，进行资源的交互
+    //无法读取非同源网页的Cookie\LocalStorage和IndexedDB
+    //无法接触非同源网页的DOM
+    //无法向非同源地址的Ajax请求
+
+    //不是同源就是跨域
+
+    // JSONP 解决跨域问题，只支持GET请求，不支持POST请求
+    // CORS 属于Ajax请求的根本解决问题，支持get、post请求，缺点是不兼容一些低版本浏览器 
+    /*
+    JSONP的实现原理
+      由于浏览器同源策略的限制，网页中无法通过Ajax请求非同源的接口数据。但是<script>
+      标签不受浏览器同源策略的影响， 可以通过src属性， 请求非同源的js脚本。
+      因此，JSONP的实现原理， 就是通过 < script > 标签的src属性， 
+      请求跨域的数据接口， 并通过函数调用的形式， 接收跨域接口响应回来的数据。 
+      */
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./js/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="./../bootstrap/css/bootstrap.css">
+  <!-- 0.导入js文件 -->
+  <script src="./js/template-web.js"></script>
+</head>
+
+<body>
+
+  <style>
+    body {
+      margin: 25px;
+    }
+  </style>
+
+  <!-- //4. -->
+  <div id="container"></div>
+
+  <!-- //2. -->
+  <script type="text/html" id="temp">
+    <h3>name:{{name}}</h3>
+    <h3>sex:{{sex}}</h3>
+    <h3>age:{{age}}</h3>
+  </script>
+
+  <script>
+    //1.
+    var stuinfo = {
+      name: 'sss',
+      sex: 'man',
+      age: 20
+    }
+    //3.
+    var htmlstr = template('temp', stuinfo)
+    //5.
+    $('#container').html(htmlstr)
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <form action="" target="_blank" method="post">
+    <input type="text" name="email">
+    <input type="password" name="password">
+    <button type="submit">提交</button>
+  </form>
+
+  <script>
+    //1.action 属性，当提交表单时，向何发送表单数据 
+    //如果html没设置action时，会默认传到本网站
+    //当提交表单后，页面会跳转到action属性指定的url地址
+    //2.target="_self/_blank" 是否跳转到新窗口
+    //3.method="get/post"    一般用post
+    //4.enctype：当涉及文件上传是，必须将enctype的值设置为 multipart/form-data
+
+    //表单同步提交的缺点: 1.页面会跳转 2.页面之前的状态和数据会丢失
+    //表单只负责采集数据，ajax负责将数据提交到服务器
+  </script>
+</body>
+
+</html>

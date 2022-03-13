@@ -60,13 +60,17 @@
     
    // 提交更新
    git commit -m "提交内容描述" 
-    
-    //注意:修改过的、没有放入暂存区的文件前面有红色的M标记。 modified 
+    再次运行git commit -m "提交消息"命令，即可将暂存区中记录的 47-Git.html 的快照，提交到Git仓库中进
 
-    
-    
-    
-    
+    //注意:修改过的、没有放入暂存区的文件前面有 红色 的M标记。 modified 
+    经过 git add 文件  之后，用git status -s 会显示 绿色 的M标记 
+
+    //撤销修改
+     git checkout -- 47-Git.html
+
+    //一次性将所有的新增和修改过的文件加入暂存区:
+    git add .
+
     */
   </script>
 
