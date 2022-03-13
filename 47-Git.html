@@ -75,7 +75,13 @@
      git reset HEAD 要移除的文件名称
     //移除多个文件 
      git reset HEAD .
-     
+
+
+
+    // Git提供了一个跳过使用暂存区域的方式，只要在提交的时候，给git commit加上-a选项，
+     Git就会自动把所有已经跟踪过的文件暂存起来一并提交，从而跳过git add步骤:
+      工作区-> git仓库
+     git commit -a -m“描述消息"
     */
   </script>
 
