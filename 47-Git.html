@@ -56,7 +56,7 @@
      1.3 把有冲突的文件标记为已解决状态
     
    // 清空终端结果
-    clear  
+    clear   / ctrl+l
     
    // 提交更新
    git commit -m "提交内容描述" 
@@ -66,7 +66,7 @@
     经过 git add 文件  之后，用git status -s 会显示 绿色 的M标记 
 
     //撤销修改
-     git checkout -- 47-Git.html
+     git checkout -- 文件名.后缀
 
     //一次性将所有的新增和修改过的文件加入暂存区:
     git add .
@@ -76,13 +76,70 @@
     //移除多个文件 
      git reset HEAD .
 
-
-
     // Git提供了一个跳过使用暂存区域的方式，只要在提交的时候，给git commit加上-a选项，
      Git就会自动把所有已经跟踪过的文件暂存起来一并提交，从而跳过git add步骤:
       工作区-> git仓库
      git commit -a -m“描述消息"
-    */
+
+    //从Git仓库和工作区中同时移除文件  rm（remove）
+    git rm -f 文件名.后缀
+    //只从 Git 仓库中移除，但保留工作区中的文件
+    git rm --cached 文件名.后缀
+
+
+
+    以创建一个名为.gitignore 的配置文件，列出要忽略的文件的匹配模式。文件.gitignore 的格式规范如下:
+    以#开头的是注释
+    以/结尾的是目录
+    以/开头防止递归
+    以!开头表示取反
+    可以使用glob模式进行文件和文件夹的匹配(glob 指简化了的正则表达式)
+    [abc]匹配任何一个列在方括号中的字符（此案例匹配一个a或匹配一个b 或匹配一个c)问号﹖只匹配一个任意字符
+    在方括号中使用短划线分隔两个字符，表示所有在这两个字符范围内的都可以匹配（比如[0-9]表示匹配
+    所有0到9的数字)
+    两个星号**表示匹配任意中间目录( 比如a/星星/z可以匹配 a/z、a/ b / z或a / b / c / z等)
+
+    //例子
+    #忽略所有的.a文件
+     *.a
+
+    #但跟踪所有的lib.a，即便你在前面忽略了.a文件5
+    !lib.a
+
+    #只忽略当前目录下的 TODO文件，而不忽略subdir/TODO8 
+    /TOD0
+
+    #忽略任何目录下名为build的文件夹
+    build/
+
+    #忽略 doc/notes.txt，但不忽略doc/server/arch.txt
+    doc/*.txt
+
+    #忽略 doc/目录及其所有子目录下的.pdf文件
+    doc/星星/*.pdf
+
+    //git log 
+
+    #按时间先后顺序列出所有的提交历史，最近的提交排在最上面
+    git log
+    #只展示最新的两条提交历史，数字可以按需进行填写
+    git log -2
+    #在一行上展示最近两条提交历史的信息
+    git log -2 --pretty=oneline
+    #在一行上展示最近两条提交历史的信息，并自定义输出的格式
+    
+
+    //回退到指定版本 
+    #在一行上展示所有的提交历史
+    git log --pretty=oneline
+    #使用git reset --hard命令，根据指定的提交ID回退到指定版本
+    git reset --hard <CommitID>
+    #在旧版本中使用git reflog --pretty=oneline命令，查看命令操作的历史
+    git reflog --pretty=oneline
+    #再次根据最新的提交ID，跳转到最新的版本
+    git reset --hard <CommitID>
+
+          */
   </script>
 
 </body>
